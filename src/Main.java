@@ -12,13 +12,10 @@ public class Main {
 
         System.out.println("Задача 1.");
         int clientOS = (int) (Math.random() * 2);
-        switch (clientOS) {
-            case 0:
-                System.out.println("Установите версию приложения для iOS по ссылке.");
-                break;
-            case 1:
-                System.out.println("Установите версию приложения для Android по ссылке.");
-                break;
+        if (clientOS == 0) {
+            System.out.println("Установите версию приложения для iOS по ссылке.");
+        } else{
+            System.out.println("Установите версию приложения для Android по ссылке.");
         }
         System.out.println();
 
@@ -37,19 +34,22 @@ public class Main {
         int maxYear = 2025;
 
         int clientDeviceYear = (int) (Math.random() * (maxYear - minYear + 1) + minYear);
-        if (clientOS == 0) {
-            if (clientDeviceYear < 2015) {
+        if (clientDeviceYear < 2015){
+            if (clientOS == 0){
                 System.out.println("Установите облегченную версию приложения для iOS по ссылке.");
-                return;
-            }
-            System.out.println("Установите версию приложения для iOS по ссылке.");
-        } else {
-            if (clientDeviceYear < 2015) {
+            }else {
                 System.out.println("Установите облегченную версию приложения для Android по ссылке.");
-                return;
             }
-            System.out.println("Установите версию приложения для Android по ссылке.");
+        }else {
+            if (clientOS == 0){
+                System.out.println("Установите версию приложения для iOS по ссылке.");
+            }else {
+                System.out.println("Установите версию приложения для Android по ссылке.");
+            }
         }
+
+
+
         System.out.println();
 
         //Задача 3
@@ -99,7 +99,9 @@ public class Main {
         } else if (deliveryDistance <= 100) {
             day = 3;
             System.out.println("Потребуется дней: " + day);
-        } else System.out.println("Свыше 100 км доставки нет");
+        } else {
+            System.out.println("Свыше 100 км доставки нет");
+        }
         System.out.println();
 
         //Задача 5
