@@ -2,14 +2,167 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        //Задача 1
+        //У банка появилось мобильное приложение. Поэтому теперь, когда пользователь заходит на сайт с телефона, ему предлагается скачать приложение с учетом того, какая операционная система у пользователя.
+        //Напишите программу, которая определяет, чем пользуется клиент (iOS или Android), и выдает соответствующее сообщение:
+        //Для iOS — «Установите версию приложения для iOS по ссылке».
+        //Для Android — «Установите версию приложения для Android по ссылке».
+        //Объявите переменную clientOS, которая равна 0 или 1 (0 — iOS, 1 — Android).
+
+        System.out.println("Задача 1.");
+        int clientOS = (int) (Math.random() * 2);
+        switch (clientOS) {
+            case 0:
+                System.out.println("Установите версию приложения для iOS по ссылке.");
+                break;
+            case 1:
+                System.out.println("Установите версию приложения для Android по ссылке.");
+                break;
         }
+        System.out.println();
+
+        //Задача 2
+        //Усложним предыдущую задачу. Теперь нам нужно знать не только операционную систему телефона, но и год его создания.
+        //Ваша задача — написать программу, которая выдает соответствующее сообщение клиенту при наличии двух условий.
+        //Если год выпуска ранее 2015 года, то к сообщению об установке нужно добавить информацию об облегченной версии:
+        //Для iOS оно будет звучать так: «Установите облегченную версию приложения для iOS по ссылке».
+        //Для Android: «Установите облегченную версию приложения для Android по ссылке».
+        //Для пользователей телефонов 2015 года выпуска и позже нужно вывести обычное предложение об установке приложения.
+        //Для года создания телефона используйте переменную clientDeviceYear, в которой необходимо указать 2015 год.
+
+        System.out.println("Задача 2.");
+
+        int minYear = 2010;
+        int maxYear = 2025;
+
+        int clientDeviceYear = (int) (Math.random() * (maxYear - minYear + 1) + minYear);
+        if (clientOS == 0) {
+            if (clientDeviceYear < 2015) {
+                System.out.println("Установите облегченную версию приложения для iOS по ссылке.");
+                return;
+            }
+            System.out.println("Установите версию приложения для iOS по ссылке.");
+        } else {
+            if (clientDeviceYear < 2015) {
+                System.out.println("Установите облегченную версию приложения для Android по ссылке.");
+                return;
+            }
+            System.out.println("Установите версию приложения для Android по ссылке.");
+        }
+        System.out.println();
+
+        //Задача 3
+        //Напишите программу, которая определяет, является ли год високосным или нет.
+        //Переменную года назовите year, в которую можно подставить значение интересующего нас года. Например, 2021.
+        //Программа должна определять, високосный год или нет, и выводить соответствующее сообщение: « …. год является високосным» или «... год не является високосным».
+        //Небольшая справка: високосным является каждый четвертый год, но не является каждый сотый.
+        // Также високосным является каждый четырехсотый год. Год должен быть больше, чем 1584 (в котором был введен високосный год).
+
+        System.out.println("Задача 3.");
+        minYear = 1584;
+        int year = (int) (Math.random() * (maxYear - minYear + 1) + minYear);
+
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+            System.out.println(year + " год является високосным.");
+        } else {
+            System.out.println(year + " год не является високосным.");
+        }
+        System.out.println();
+
+        //Задача 4
+        //В банке для клиентов организовывается доставка карт на дом. Чтобы известить клиента о том,
+        // когда будет доставлена его карта, нужно знать расстояние от офиса до адреса доставки.
+        //
+        //Правила доставки такие:
+        //
+        //Доставка в пределах 20 км занимает сутки.
+        //Доставка в пределах от 20 км до 60 км добавляет еще один день доставки.
+        //Доставка в пределах 60 км до 100 км добавляет еще одни сутки.
+        //Свыше 100 км доставки нет.
+        //То есть с каждым следующим интервалом доставки срок увеличивается на 1 день.
+        //
+        //Напишите программу, которая выдает сообщение в консоль: "Потребуется дней: " + срок доставки.
+        //
+        //Объявите целочисленную переменную deliveryDistance = 95, которая содержит дистанцию до клиента.
+
+        System.out.println("Задача 4.");
+
+        int deliveryDistance = (int) (Math.random() * 110);
+        int day;
+        if (deliveryDistance <= 20) {
+            day = 1;
+            System.out.println("Потребуется дней: " + day);
+        } else if (deliveryDistance <= 60) {
+            day = 2;
+            System.out.println("Потребуется дней: " + day);
+        } else if (deliveryDistance <= 100) {
+            day = 3;
+            System.out.println("Потребуется дней: " + day);
+        } else System.out.println("Свыше 100 км доставки нет");
+        System.out.println();
+
+        //Задача 5
+        //Напишите программу, которая определяет по номеру месяца в году, к какому сезону этот месяц принадлежит. Например, 1-й месяц (он же январь) принадлежит к сезону зима.
+        //
+        //Для написания программы используйте оператор switch. Для обозначения номера месяца используйте переменную monthNumber = 12.
+        //
+        //Пропишите условие, при котором программа не будет выполняться (номер месяца больше 12).
+
+        System.out.println("Задача 5.");
+
+        int monthNumber = (int) (Math.random() * 20) + 1;
+        System.out.println(monthNumber);
+//        switch (monthNumber) {
+//            case 1:
+//                System.out.println("Зима");
+//                break;
+//            case 2:
+//                System.out.println("Зима");
+//                break;
+//            case 3:
+//                System.out.println("Весна");
+//                break;
+//            case 4:
+//                System.out.println("Весна");
+//                break;
+//            case 5:
+//                System.out.println("Весна");
+//                break;
+//            case 6:
+//                System.out.println("Лето");
+//                break;
+//            case 7:
+//                System.out.println("Лето");
+//                break;
+//            case 8:
+//                System.out.println("Лето");
+//                break;
+//            case 9:
+//                System.out.println("Осень");
+//                break;
+//            case 10:
+//                System.out.println("Осень");
+//                break;
+//            case 11:
+//                System.out.println("Осень");
+//                break;
+//            case 12:
+//                System.out.println("Зима");
+//                break;
+//            default:
+//                System.out.println("В году 12 месяцев!!!");
+
+        //Или
+
+        switch (monthNumber) {
+            case 12, 1, 2 -> System.out.println("Зима");
+            case 3, 4, 5 -> System.out.println("Весна");
+            case 6, 7, 8 -> System.out.println("Лето");
+            case 9, 10, 11 -> System.out.println("Осень");
+            default -> System.out.println("В году 12 месяцев!!!");
+        }
+
+
     }
 }
